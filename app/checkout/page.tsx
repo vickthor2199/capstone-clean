@@ -1,0 +1,55 @@
+"use client";
+
+// Update the import path if the file is in a different location or fix the filename casing if needed
+import { useCart } from "../../lib/CartContext";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export default function CheckoutPage() {
+  const { cart } = useCart();
+  const router = useRouter();
+  const [submitted, setSubmitted] = useState(false);
+
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+  const handleCheckout = () => {
+    setSubmitted(true);
+    setTimeout(() => {
+      router.push("/");
+    }, 3000); // Go back to home after 3 seconds
+  };
+
+  return (
+    <main className="p-6 max-w-xl mx-auto">
+      <h1 className="text-3xl font-bold mb-4">Checkout</h1>
+
+      {submitted ? (
+        <div className="text-green-600 text-xl font-semibold">
+          ✅ Order placed successfully! Redirecting to home...
+        </div>
+      ) : (
+        <>
+          <div className="mb-6 space-y-2">
+            {cart.map((item, index) => (
+              <div key={`${item.id}-${index}`} className="border p-4 rounded">
+                <h2 className="font-semibold">{item.name}</h2>
+                <p>₦{item.price}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-right font-bold text-xl mb-4">
+            Total: ₦{total.toFixed(2)}
+          </div>
+
+          <button
+            onClick={handleCheckout}
+            className="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700"
+          >
+            Place Order
+          </button>
+        </>
+      )}
+    </main>
+  );
+}
