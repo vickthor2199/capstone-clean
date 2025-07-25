@@ -1,8 +1,11 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   eslint: {
+    // ✅ THIS disables all ESLint checks during build
     ignoreDuringBuilds: true,
+  },
+  images: {
+    unoptimized: true, // Optional: disables image optimization if needed
   },
 };
 
