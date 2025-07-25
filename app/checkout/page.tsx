@@ -3,6 +3,8 @@
 import { useCart } from "../../lib/CartContext"; // ✅ Make sure this path is correct
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { formatCurrency } from "@/utils/formatCurrency";
+
 
 export default function CheckoutPage() {
   const { cart, clearCart } = useCart(); // ✅ Include clearCart
@@ -30,17 +32,17 @@ export default function CheckoutPage() {
       ) : (
         <>
           <div className="mb-6 space-y-2">
-            {cart.map((item, index) => (
-              <div key={`${item.id}-${index}`} className="border p-4 rounded">
-                <h2 className="font-semibold">{item.name}</h2>
-                <p>₦{item.price}</p>
-              </div>
-            ))}
-          </div>
+  {cart.map((item, index) => (
+    <div key={`${item.id}-${index}`} className="border p-4 rounded">
+      <h2 className="font-semibold">{item.name}</h2>
+      <p>{formatCurrency(item.price)}</p>
+    </div>
+  ))}
+</div>
 
-          <div className="text-right font-bold text-xl mb-4">
-            Total: ₦{total.toFixed(2)}
-          </div>
+<div className="text-right font-bold text-xl mb-4">
+  Total: {formatCurrency(total)}
+</div>
 
           <button
             onClick={handleCheckout}
