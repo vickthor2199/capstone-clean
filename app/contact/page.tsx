@@ -2,7 +2,7 @@
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-gray-100 py-16 px-4">
+    <main className="min-h-screen bg-[#101828] py-16 px-4">
       <section className="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12 relative">
         {/* Light gold background overlay for a stylish touch */}
         <div className="absolute inset-0 bg-[#CC9433]/10 opacity-10 rounded-2xl pointer-events-none" />
@@ -23,7 +23,7 @@ export default function ContactPage() {
 
           <div>
             <h2 className="text-2xl font-semibold text-[#CC9433] mb-2">📞 Phone</h2>
-            <p className="text-gray-700">+234 800 000 0000</p>
+            <p className="text-gray-700">+234 808 977 9549</p>
           </div>
 
           <div>

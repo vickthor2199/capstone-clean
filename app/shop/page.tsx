@@ -90,8 +90,8 @@ export default function ShopPage() {
             {/* 🛒 Actions */}
             <div className="flex items-center justify-between">
               <button
-                onClick={() => {
-  addToCart(product);
+onClick={() => {
+  addToCart({ ...product, id: String(product.id), quantity: 1 });
   toast.success(`${product.name} added to cart!`);
 }}
 

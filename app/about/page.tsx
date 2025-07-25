@@ -1,29 +1,71 @@
 "use client";
 
-export default function AboutPage() {
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+export default function About() {
   return (
-    <main className="min-h-screen bg-gray-100 py-16 px-4">
-      <section className="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12 relative">
-        {/* Light gold overlay for subtle design */}
-        <div className="absolute inset-0 bg-[#CC9433]/10 opacity-10 rounded-2xl pointer-events-none" />
+    <main className="min-h-screen py-20 px-4 bg-[#101828]">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-4xl font-bold text-center mb-12 text-[#CC9433]">About CNG Store</h1>
 
-        <h1 className="text-4xl md:text-5xl font-bold text-center text-gray-800 mb-8">
-          About <span className="text-[#CC9433]">CNG Store</span>
-        </h1>
+        <div className="space-y-8">
+          {/* Our Story */}
+          <Card>
+            <CardHeader>
+              <CardTitle><span className="text-[#CC9433]">Our Story</span></CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-lg text-slate-700 leading-relaxed">
+                CNG Store was born from a passion for merging technology with fashion. Whether it's 
+                bold vintage wear or the latest gadgets, our goal is to deliver a shopping experience 
+                that's modern, exciting, and built for trendsetters. Each product is handpicked to reflect 
+                quality and personality.
+              </p>
+            </CardContent>
+          </Card>
 
-        <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
-          At <span className="font-semibold text-gray-900">CNG Store</span>, we merge fashion and technology to bring you the trendiest products from sleek gadgets to bold street-wears.
-        </p>
+          {/* Our Mission */}
+          <Card>
+            <CardHeader>
+              <CardTitle><span className="text-[#CC9433]">Our Mission</span></CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-lg text-slate-700 leading-relaxed">
+                Our mission is to offer high-quality and stylish products at affordable prices. From 
+                tech-savvy tools to fashion-forward fits, we aim to empower individuals through curated 
+                collections, all backed by top-tier customer service.
+              </p>
+            </CardContent>
+          </Card>
 
-        <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
-          We're passionate about <span className="text-gray-900 font-medium">quality</span>, <span className="text-gray-900 font-medium">design</span>, and <span className="text-gray-900 font-medium">affordability</span>. Whether you're shopping for a smartwatch, vintage shirt, or gaming gear, you'll find a curated collection made for modern trendsetters like you.
-        </p>
-
-        <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-          Based in <span className="text-[#CC9433] font-medium">Nigeria</span>, we’re committed to providing an enjoyable online shopping experience with fast service and friendly support. Join our journey and stay ahead of the trend!
-        </p>
-      </section>
+          {/* Our Values */}
+          <Card>
+            <CardHeader>
+              <CardTitle><span className="text-[#CC9433]">Our Values</span></CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="font-semibold text-lg mb-2 text-gray-800">Quality & Style</h3>
+                  <p className="text-slate-600">We carefully select every item to ensure it meets our standards in both fashion and function.</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2 text-gray-800">Customer Commitment</h3>
+                  <p className="text-slate-600">Your satisfaction drives us  we’re here to make sure your experience is smooth and rewarding.</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2 text-gray-800">Innovation</h3>
+                  <p className="text-slate-600">We stay ahead of trends and tech to bring you the best in both worlds.</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2 text-gray-800">Proudly Nigerian</h3>
+                  <p className="text-slate-600">Rooted in Nigeria, we take pride in delivering globally inspired products with a local heart.</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
     </main>
   );
 }
-

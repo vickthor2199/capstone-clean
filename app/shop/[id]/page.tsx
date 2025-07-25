@@ -3,13 +3,14 @@
 import { useCart } from "@/lib/CartContext";
 import { formatCurrency } from "../../../utils/formatCurrency";
 import products from "@/lib/products";
-import { notFound, useParams } from "next/navigation";
+import { notFound, useParams, useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function ProductDetail() {
   const { addToCart } = useCart();
   const params = useParams();
+  const router = useRouter();
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
 
   const product = products.find((p) => p.id.toString() === id);
@@ -17,14 +18,16 @@ export default function ProductDetail() {
   if (!product) return notFound();
 
   const handleAddToCart = () => {
-    addToCart(product);
+    addToCart({ ...product, id: product.id.toString(), quantity: 1 });
+
     toast.success(`${product.name} added to cart`, {
       position: "top-right",
-      autoClose: 2000,
+      autoClose: 1500,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
+      onClose: () => router.push("/shop"), // 👈 Redirect after toast
     });
   };
 
@@ -43,7 +46,9 @@ export default function ProductDetail() {
 
         <div className="flex flex-col justify-between">
           <div>
-            <h1 className="text-4xl font-extrabold text-gray-900 mb-4">{product.name}</h1>
+            <h1 className="text-4xl font-extrabold text-gray-900 mb-4">
+              {product.name}
+            </h1>
             <p className="text-2xl text-green-600 font-semibold mb-6">
               {formatCurrency(product.price)}
             </p>

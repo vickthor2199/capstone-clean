@@ -1,10 +1,10 @@
 
 
-import Header from "./components/Header";
+import Header from "../components/Header";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Footer from "./components/Footer";
+import Footer from "../components/Footer";
 import "./globals.css";
 import Providers from "./providers"; // ✅ NO curly braces
 

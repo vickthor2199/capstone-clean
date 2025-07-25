@@ -7,10 +7,11 @@ import Link from "next/link";
 export default function CartPage() {
   const { cart, removeFromCart, increaseQty, decreaseQty } = useCart();
 
-  const total = cart.reduce(
-    (sum, item) => sum + item.price * (item.quantity || 1),
-    0
-  );
+  const total = cart.reduce((sum, item) => {
+    const price = item?.price || 0;
+    const quantity = item?.quantity || 1;
+    return sum + price * quantity;
+  }, 0);
 
   return (
     <main className="min-h-screen bg-gray-100 px-4 md:px-10 py-10">
@@ -39,12 +40,13 @@ export default function CartPage() {
               >
                 <div className="flex items-center gap-4">
                   <Image
-                    src={item.image}
+                    src={item.image || "/products/placeholder.png"}
                     alt={item.name}
                     width={80}
                     height={80}
-                    className="object-contain rounded-md border"
+                    className="rounded"
                   />
+
                   <div>
                     <h2 className="text-lg font-semibold text-gray-800">
                       {item.name}
@@ -57,8 +59,9 @@ export default function CartPage() {
                     <div className="flex items-center gap-2 mt-3">
                       <button
                         onClick={() => decreaseQty(item.id)}
-                        className="w-9 h-9 text-xl bg-black border border-gray-300 rounded-full shadow hover:bg-gray-300 transition"
+                        className="w-9 h-9 text-xl bg-black border border-gray-300 rounded-full shadow hover:bg-gray-300 transition text-white"
                         aria-label="Decrease quantity"
+                        disabled={item.quantity <= 1}
                       >
                         –
                       </button>
@@ -67,7 +70,7 @@ export default function CartPage() {
                       </span>
                       <button
                         onClick={() => increaseQty(item.id)}
-                        className="w-9 h-9 text-xl bg-black border border-gray-300 rounded-full shadow hover:bg-gray-300 transition"
+                        className="w-9 h-9 text-xl bg-black border border-gray-300 rounded-full shadow hover:bg-gray-300 transition text-white"
                         aria-label="Increase quantity"
                       >
                         +
