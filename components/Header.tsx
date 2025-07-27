@@ -18,7 +18,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="bg-gray-900 text-white px-6 py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0 shadow-md">
+    <header className="bg-gray-900 text-white px-6 py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0">
       {/* Logo */}
       <Link
         href="/"
@@ -70,7 +70,7 @@ export default function Header() {
         <div className="relative flex items-center">
           <Link
             href="/cart"
-            className="hover:text-amber-400 flex items-center cursor-pointer" // ← cursor added
+            className="hover:text-amber-400 flex items-center cursor-pointer" 
           >
             <FaShoppingCart className="text-xl" />
             {cartCount > 0 && (
